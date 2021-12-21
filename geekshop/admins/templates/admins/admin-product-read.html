@@ -1,4 +1,5 @@
 {% extends 'admins/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -9,34 +10,16 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        Продукты
+                        {% translate 'Продукты' %}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
-                                <tr>
-                                    <th>Наименование</th>
-                                    <th>Описание</th>
-                                    <th>Категория</th>
-                                    <th>Цена</th>
-                                    <th>Количество</th>
-                                    <th>Активный</th>
-                                    <th>Удалить</th>
-                                    <th>Изменить</th>
-                                </tr>
+                                    {% include 'admins/includes/inc_thead_tfoot.html' %}
                                 </thead>
                                 <tfoot>
-                                <tr>
-                                    <th>Наименование</th>
-                                    <th>Описание</th>
-                                    <th>Категория</th>
-                                    <th>Цена</th>
-                                    <th>Количество</th>
-                                    <th>Активный</th>
-                                    <th>Удалить</th>
-                                    <th>Изменить</th>
-                                </tr>
+                                    {% include 'admins/includes/inc_thead_tfoot.html' %}
                                 </tfoot>
                                 <tbody>
 

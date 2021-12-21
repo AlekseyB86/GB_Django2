@@ -3,24 +3,24 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Приложения</div>
+                    <div class="sb-sidenav-menu-heading">{% translate 'Приложения' %}</div>
                     <a class="nav-link" href="{% url 'admins:admin_users' %}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        {% translate 'Users' %}
+                        {% translate 'Пользователи' %}
                     </a>
                     <a class="nav-link" href="{% url 'admins:admin_category' %}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-shopping-basket"></i>
                         </div>
-                        {% translate 'Categories' %}
+                        {% translate 'Категории' %}
                     </a>
                     <a class="nav-link" href="{% url 'admins:admins_product' %}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-tshirt"></i>
                         </div>
-                        {% translate 'Products' %}
+                        {% translate 'Продукты' %}
                     </a>
                 </div>
             </div>
