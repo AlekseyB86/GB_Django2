@@ -16,10 +16,10 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
-                                    {% include 'admins/includes/inc_thead_tfoot.html' %}
+                                {% include 'admins/includes/inc_thead_tfoot_product.html' %}
                                 </thead>
                                 <tfoot>
-                                    {% include 'admins/includes/inc_thead_tfoot.html' %}
+                                {% include 'admins/includes/inc_thead_tfoot_product.html' %}
                                 </tfoot>
                                 <tbody>
 
@@ -30,37 +30,33 @@
                                         <td>{{ product.category }}</td>
                                         <td>{{ product.price }}</td>
                                         <td>{{ product.quantity }}</td>
-
-                                        <td class="text-center">
-                                            {% if product.is_active %}
-                                                <i class="fas fa-check-circle"></i>
-                                            {% else %}
-
-                                                <i class="fas fa-times-circle"></i>
-                                            {% endif %}
-                                        </td>
                                         <td>
                                             <form action="{% url 'admins:admins_product_delete' product.id %}"
                                                   method="post">
                                                 {% csrf_token %}
-                                                <input class="btn btn-danger btn-block" type="submit" value="Удалить">
+                                                <input type="submit"
+                                                    {% if product.is_active %}
+                                                       class="btn btn-block btn-danger" value="Удалить"
+                                                    {% else %}
+                                                       class="btn btn-block btn-success" value="Восстановить"
+                                                    {% endif %}>
                                             </form>
                                         </td>
                                         <td>
-
                                             <a href="{% url 'admins:admins_product_update' product.id %}">
-                                                 <input class="btn btn-success btn-block" type="submit" value="Изменить">
+                                                <input type="submit" class="btn btn-info btn-block" value="Изменить">
                                             </a>
                                         </td>
                                     </tr>
                                 {% endfor %}
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="card-footer">
                         <a href="{% url 'admins:admins_product_create' %}">
-                            <button class="btn btn-success">Создать продукт</button>
+                            <button class="btn btn-success">{% translate 'Создать продукт' %}</button>
                         </a>
                     </div>
                 </div>

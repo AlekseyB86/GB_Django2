@@ -1,16 +1,17 @@
 {% extends 'admins/base.html' %}
+{% load i18n %}
 
 {% block content %}
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Создание категории</h1>
+                <h1 class="mt-4">{% translate 'Создание категории' %}</h1>
                 <form action="{% url 'admins:admin_category_create' %}" method="post">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="small mb-1" for="{{ form.name.id_for_label }}">Наименование</label>
+                                <label class="small mb-1" for="{{ form.name.id_for_label }}">{% translate 'Наименование' %}</label>
                                 {{ form.name }}
                             </div>
                         </div>
@@ -20,7 +21,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="small mb-1" for="{{ form.description.id_for_label }}">Описание</label>
+                                <label class="small mb-1" for="{{ form.description.id_for_label }}">{% translate 'Описание' %}</label>
                                 {{ form.description }}
                             </div>
                         </div>

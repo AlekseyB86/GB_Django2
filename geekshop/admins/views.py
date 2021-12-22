@@ -23,7 +23,7 @@ class IndexTemplateView(TemplateView):
 class UserListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-read.html'
-    title = 'Админка | Пользователи'
+    title = 'Пользователи'
 
 
 class UserCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
@@ -31,7 +31,7 @@ class UserCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
     template_name = 'admins/admin-users-create.html'
     form_class = UserAdminRegisterForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Админка | Создать пользователя'
+    title = 'Создание пользователя'
 
 
 class UserUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
@@ -39,7 +39,7 @@ class UserUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Админка | Обновить пользователя'
+    title = 'Редактирование пользователя'
 
 
 class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
@@ -47,7 +47,7 @@ class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Админка | Удалить пользователя'
+    title = 'Удаление пользователя'
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -60,7 +60,7 @@ class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
 class CategoryListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-read.html'
-    title = 'Админка | Список категорий'
+    title = 'Категории'
 
     def get_queryset(self):
         if self.kwargs:
@@ -73,6 +73,8 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     success_url = reverse_lazy('admins:admin_category')
+    title = 'Удаление Категории'
+
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -101,7 +103,7 @@ class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin)
 class ProductListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-product-read.html'
-    title = _('Админка') + ' | ' + _('Продукты')
+    title = 'Админка | Продукты'
 
 
 class ProductsUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
