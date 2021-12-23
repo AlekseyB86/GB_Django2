@@ -1,20 +1,12 @@
 {% extends 'admins/base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid">
-                <h1 class="mt-4">{% translate 'Административная панель' %}</h1>
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">{% translate 'Административная панель' %}</h1>
 
-            </div>
-        </main>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; GeekShop {% now "Y" %}</div>
-                </div>
-            </div>
-        </footer>
-    </div>
+        </div>
+    </main>
 {% endblock %}

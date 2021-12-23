@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-21 21:42+0300\n"
+"POT-Creation-Date: 2021-12-23 16:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,70 +18,201 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\admins\templates\admins\admin-product-read.html:13
-#: .\admins\templates\admins\includes\siberia_bar.html:23 .\admins\views.py:104
+#: .\admins\templates\admins\admin-category-create.html:8
+msgid "Создание категории"
+msgstr "Create a category"
+
+#: .\admins\templates\admins\admin-category-create.html:15
+#: .\admins\templates\admins\admin-category-update-delete.html:17
+#: .\admins\templates\admins\includes\inc_thead_tfoot_category.html:3
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:3
+msgid "Наименование"
+msgstr "Name"
+
+#: .\admins\templates\admins\admin-category-create.html:24
+#: .\admins\templates\admins\admin-category-update-delete.html:26
+#: .\admins\templates\admins\admin-products-create.html:50
+#: .\admins\templates\admins\admin-products-update-delete.html:57
+#: .\admins\templates\admins\includes\inc_thead_tfoot_category.html:4
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:4
+msgid "Описание"
+msgstr "Description"
+
+#: .\admins\templates\admins\admin-category-read.html:8
+#: .\admins\templates\admins\admin-category-read.html:12
+#: .\admins\templates\admins\includes\siberia_bar.html:19
+msgid "Категории"
+msgstr "Categories"
+
+#: .\admins\templates\admins\admin-category-read.html:49
+msgid "Создать категорию"
+msgstr "Create a category"
+
+#: .\admins\templates\admins\admin-category-update-delete.html:8
+msgid "Редактирование категории"
+msgstr "Editing a category"
+
+#: .\admins\templates\admins\admin-product-read.html:8
+#: .\admins\templates\admins\admin-product-read.html:12
+#: .\admins\templates\admins\includes\siberia_bar.html:25
 msgid "Продукты"
 msgstr "Products"
+
+#: .\admins\templates\admins\admin-product-read.html:52
+msgid "Создать продукт"
+msgstr "Create a product"
+
+#: .\admins\templates\admins\admin-products-create.html:8
+msgid "Создание продукта"
+msgstr "Create a product"
+
+#: .\admins\templates\admins\admin-products-create.html:15
+#: .\admins\templates\admins\admin-products-update-delete.html:17
+msgid "Название"
+msgstr "Name"
+
+#: .\admins\templates\admins\admin-products-create.html:22
+#: .\admins\templates\admins\admin-products-update-delete.html:24
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:5
+msgid "Категория"
+msgstr "Category"
+
+#: .\admins\templates\admins\admin-products-create.html:32
+#: .\admins\templates\admins\admin-products-update-delete.html:34
+#: .\admins\templates\admins\admin-users-create.html:32
+#: .\admins\templates\admins\admin-users-update-delete.html:34
+msgid "Выберите изображение"
+msgstr "Select an image"
+
+#: .\admins\templates\admins\admin-products-create.html:38
+#: .\admins\templates\admins\admin-products-update-delete.html:42
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:6
+msgid "Цена"
+msgstr "Price"
+
+#: .\admins\templates\admins\admin-products-create.html:43
+#: .\admins\templates\admins\admin-products-update-delete.html:49
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:7
+msgid "Количество"
+msgstr "Quantity"
+
+#: .\admins\templates\admins\admin-products-update-delete.html:8
+msgid "Редактирование продукта"
+msgstr "Editing a product"
+
+#: .\admins\templates\admins\admin-users-create.html:8
+msgid "Создание пользователя"
+msgstr "User creation"
+
+#: .\admins\templates\admins\admin-users-create.html:15
+#: .\admins\templates\admins\admin-users-update-delete.html:17
+#: .\admins\templates\admins\includes\inc_thead_user.html:4
+msgid "Имя"
+msgstr "First name"
+
+#: .\admins\templates\admins\admin-users-create.html:22
+#: .\admins\templates\admins\admin-users-update-delete.html:24
+#: .\admins\templates\admins\includes\inc_thead_user.html:5
+msgid "Фамилия"
+msgstr "Second name"
+
+#: .\admins\templates\admins\admin-users-create.html:39
+#: .\admins\templates\admins\admin-users-update-delete.html:41
+#: .\admins\templates\admins\includes\inc_thead_user.html:3
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: .\admins\templates\admins\admin-users-create.html:44
+#: .\admins\templates\admins\admin-users-update-delete.html:46
+msgid "Адрес электронной почты"
+msgstr "Email"
+
+#: .\admins\templates\admins\admin-users-create.html:48
+#: .\admins\templates\admins\admin-users-update-delete.html:51
+msgid "Возраст"
+msgstr "Age"
+
+#: .\admins\templates\admins\admin-users-create.html:55
+msgid "Пароль"
+msgstr "Password"
+
+#: .\admins\templates\admins\admin-users-create.html:60 .\authapp\forms.py:34
+msgid "Повторите пароль"
+msgstr "Repeat password"
+
+#: .\admins\templates\admins\admin-users-read.html:8
+#: .\admins\templates\admins\admin-users-read.html:12
+#: .\admins\templates\admins\includes\siberia_bar.html:13
+msgid "Пользователи"
+msgstr "Users"
+
+#: .\admins\templates\admins\admin-users-read.html:55
+msgid "Создать пользователя"
+msgstr "User creation"
+
+#: .\admins\templates\admins\admin-users-update-delete.html:8
+msgid "Редактирование пользователя"
+msgstr "Editing a user"
 
 #: .\admins\templates\admins\admin.html:8
 msgid "Административная панель"
 msgstr "Admin panel"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:3
-msgid "Наименование"
-msgstr "Name"
+#: .\admins\templates\admins\base.html:22
+msgid "Админка"
+msgstr "Admin"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:4
-msgid "Описание"
-msgstr "Description"
+#: .\admins\templates\admins\base.html:64
+msgid "На сайт"
+msgstr "Site"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:5
-msgid "Категория"
-msgstr "Category"
+#: .\admins\templates\admins\base.html:65
+msgid "Выход"
+msgstr "Logout"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:6
-msgid "Цена"
-msgstr "Price"
-
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:7
-msgid "Количество"
-msgstr "Quantity"
-
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:8
+#: .\admins\templates\admins\includes\inc_thead_tfoot_category.html:5
+#: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:8
+#: .\admins\templates\admins\includes\inc_thead_user.html:8
 msgid "Активный"
 msgstr "Active"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:9
-msgid "Удалить"
-msgstr "Delete"
+#: .\admins\templates\admins\includes\inc_thead_user.html:6
+msgid "Адрес эл. почты"
+msgstr "Email"
 
-#: .\admins\templates\admins\includes\inc_thead_tfoot.html:10
-msgid "Изменить"
-msgstr "Change"
+#: .\admins\templates\admins\includes\inc_thead_user.html:7
+msgid "Персонал сайта"
+msgstr "Site staff"
 
-#: .\admins\templates\admins\includes\siberia_bar.html:6
+#: .\admins\templates\admins\includes\siberia_bar.html:8
 msgid "Приложения"
 msgstr "Applications"
 
-#: .\admins\templates\admins\includes\siberia_bar.html:11
-msgid "Пользователи"
-msgstr "Users"
+#: .\authapp\forms.py:15 .\authapp\forms.py:29
+#, fuzzy
+#| msgid "Создание пользователя"
+msgid "Введите имя пользователя"
+msgstr "Username"
 
-#: .\admins\templates\admins\includes\siberia_bar.html:17
-msgid "Категории"
-msgstr "Categories"
+#: .\authapp\forms.py:16 .\authapp\forms.py:33
+#, fuzzy
+#| msgid "Повторите пароль"
+msgid "Введите пароль"
+msgstr "Repeat password"
 
-#: .\admins\views.py:104
-msgid "Админка"
-msgstr "Admin panel"
+#: .\authapp\forms.py:30
+#, fuzzy
+#| msgid "Адрес эл. почты"
+msgid "Введите адрес эл.почты"
+msgstr "Email"
 
-#: .\authapp\validator.py:9
-msgid "Имя не может быть только цифрами"
-msgstr ""
+#: .\authapp\forms.py:31
+msgid "Введите  имя"
+msgstr "Fist name"
 
-#: .\authapp\validator.py:14
-msgid "Имя не может содержать цифры"
-msgstr ""
+#: .\authapp\forms.py:32
+msgid "Введите  фамилию"
+msgstr "Second name"
 
 #: .\geekshop\settings.py:116
 msgid "Russia"
@@ -90,3 +221,12 @@ msgstr ""
 #: .\geekshop\settings.py:117
 msgid "English"
 msgstr ""
+
+#~ msgid "Изменить"
+#~ msgstr "Change"
+
+#~ msgid "Имя не может быть только цифрами"
+#~ msgstr "The name cannot be only numbers"
+
+#~ msgid "Имя не может содержать цифры"
+#~ msgstr "Name cannot contain numbers"

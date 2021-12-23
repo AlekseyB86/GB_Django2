@@ -23,15 +23,13 @@ class IndexTemplateView(TemplateView):
 class UserListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-read.html'
-    title = 'Пользователи'
 
 
-class UserCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
+class UserCreateView(CreateView, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-create.html'
     form_class = UserAdminRegisterForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Создание пользователя'
 
 
 class UserUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
@@ -39,7 +37,6 @@ class UserUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Редактирование пользователя'
 
 
 class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
@@ -47,7 +44,6 @@ class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
     success_url = reverse_lazy('admins:admin_users')
-    title = 'Удаление пользователя'
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -60,7 +56,6 @@ class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
 class CategoryListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-read.html'
-    title = 'Категории'
 
     def get_queryset(self):
         if self.kwargs:
@@ -73,8 +68,6 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     success_url = reverse_lazy('admins:admin_category')
-    title = 'Удаление Категории'
-
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -87,7 +80,6 @@ class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin)
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     form_class = CategoryUpdateFormAdmin
-    title = 'Админка | Обновления категории'
     success_url = reverse_lazy('admins:admin_category')
 
 
@@ -96,14 +88,12 @@ class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin)
     template_name = 'admins/admin-category-create.html'
     success_url = reverse_lazy('admins:admin_category')
     form_class = CategoryUpdateFormAdmin
-    title = 'Админка | Создание категории'
 
 
 # Product
 class ProductListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-product-read.html'
-    title = 'Админка | Продукты'
 
 
 class ProductsUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
@@ -118,7 +108,6 @@ class ProductsCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin)
     model = Product
     template_name = 'admins/admin-products-create.html'
     form_class = ProductsForm
-    title = 'Админка | Создание продукта'
     success_url = reverse_lazy('admins:admins_product')
 
 
