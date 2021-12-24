@@ -73,6 +73,11 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
         self.object = self.get_object()
         self.object.is_active = not self.object.is_active
         self.object.save()
+        product_list = Product.objects.filter(category__pk=self.kwargs.get('pk'))
+        for product in product_list:
+            if product.is_active:
+                product.is_active = not product.is_active
+                product.save()
         return HttpResponseRedirect(self.get_success_url())
 
 
