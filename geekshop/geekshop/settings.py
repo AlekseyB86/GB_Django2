@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
@@ -151,7 +152,8 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = True if os.getenv('EMAIL_USE_SSL') == 'True' else False
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
+# EMAIL_USE_SSL = True if os.getenv('EMAIL_USE_SSL') == 'True' else False
 
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # EMAIL_FILE_PATH = 'tmp/emails/'
