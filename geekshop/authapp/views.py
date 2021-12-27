@@ -11,7 +11,7 @@ from django.views.generic import FormView, UpdateView
 from authapp.forms import UserLoginForm, UserRegisterForm, UserProfilerForm
 from authapp.models import User
 from baskets.models import Basket
-from geekshop import settings
+from django.conf import settings
 from mainapp.mixin import BaseClassContextMixin, UserDispatchMixin
 
 
@@ -52,7 +52,7 @@ class RegisterListView(FormView, BaseClassContextMixin):
         try:
             user = User.objects.get(email=email)
             if user and user.activation_key == activate_key and not user.is_activation_key_expires():
-                user.activation_key == ''
+                user.activation_key = ''
                 user.activation_key_expires = None
                 user.is_active = True
                 user.save()
