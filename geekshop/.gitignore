@@ -1,4 +1,5 @@
 /.idea
 db.sqlite3_old
-../venv
-
+../geekvenv/
+/__pycache__/
+.env
