@@ -1,3 +1,4 @@
+import hashlib, random
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django import forms
 from django.utils.translation import gettext_lazy as _
@@ -34,6 +35,14 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = _('Повторите пароль')
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
+
+    def save(self,commit=True):
+        user = super(UserRegisterForm, self).save()
+        user.is_active = False
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
+        user.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
+        user.save()
+        return user
 
 
 class UserProfilerForm(UserChangeForm):

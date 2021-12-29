@@ -57,46 +57,24 @@
                 {% include 'mainapp/includes/card.html' %}
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
-
-
                         <li class="page-item {% if not products.has_previous %} disabled{% endif %}">
                             <a class="page-link"
                                href="{% if products.has_previous %} {% url 'mainapp:page' products.previous_page_number %} {% endif %}"
                                tabindex="-1" aria-disabled="true">Previous</a>
                         </li>
-
-
-
                         {% for page in products.paginator.page_range %}
                             <li class="page-item">
                                 <a class="page-link" href="{% url 'mainapp:page' page %}">{{ page }}</a>
                             </li>
                         {% endfor %}
-
-
-
                         <li class="page-item {% if not products.has_next %} disabled {% endif %}">
                             <a class="page-link"
                                href="{% if products.has_next %} {% url 'mainapp:page' products.next_page_number %} {% endif %}"
                                tabindex="-1" aria-disabled="true">Next</a>
                         </li>
-
-
                     </ul>
                 </nav>
-
             </div>
-
         </div>
-
     </div>
-
-{% endblock %}
-
-{% block footer %}
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; GeekShop {% now "Y" %}</p>
-        </div>
-    </footer>
 {% endblock %}
