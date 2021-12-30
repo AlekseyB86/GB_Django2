@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="card_add_basket">
     <div class="row">
         {% for product in products %}
@@ -12,12 +14,12 @@
                         <h4 class="card-title">
                             <a href="{% url 'mainapp:detail' product.id %}">{{ product.name }}</a>
                         </h4>
-                        <h5>{{ product.price }} руб.</h5>
+                        <h5>{{ product.price }} {% translate 'руб' %}.</h5>
                         <p class="card-text">{{ product.description }}</p>
                     </div>
                     <div class="card-footer text-center">
                         <button type="button" class="btn btn-outline-success" value="{{ product.id  }}">
-                            Отправить в корзину
+                            {% translate 'Отправить в корзину' %}
                         </button>
                     </div>
                 </div>

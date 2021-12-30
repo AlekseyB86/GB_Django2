@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,12 +35,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'mainapp:products' %}">Каталог <i class="fas fa-shopping-bag"></i>
+                    <a class="nav-link" href="{% url 'mainapp:products' %}">{% translate 'Каталог' %} <i
+                            class="fas fa-shopping-bag"></i>
                     </a>
                 </li>
                 {% if not user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'authapp:login' %}">Войти <i
+                        <a class="nav-link" href="{% url 'authapp:login' %}">{% translate 'Войти' %} <i
                                 class="fas fa-sign-in-alt"></i></a>
                     </li>
                 {% else %}
@@ -49,14 +51,15 @@
                         </a>
                     </li>
                     {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admins:index' %}">
+                                <i class="fas fa-users-cog"></i>
+                            </a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admins:index' %}">
-                            <i class="fas fa-users-cog"></i>
-                        </a>
-                    </li>
-                        {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'authapp:logout' %}">Выйти <i class="fas fa-sign-out-alt"></i></a>
+                        <a class="nav-link" href="{% url 'authapp:logout' %}">{% translate 'Выйти' %} <i
+                                class="fas fa-sign-out-alt"></i></a>
                     </li>
                 {% endif %}
             </ul>
@@ -68,7 +71,7 @@
 {% endblock %}
 
 {% block footer %}
-        <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; GeekShop {% now "Y" %}</p>
         </div>

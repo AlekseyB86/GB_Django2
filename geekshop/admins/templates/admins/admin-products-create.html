@@ -57,12 +57,12 @@
                 </div>
                 <div class="form-row">
                     <div class="col-lg-3" style="margin-top: 33px;">
-                        <input class="btn float-lg-right btn-info btn-block btn-lg" type="submit" value="Сохранить">
+                        <input class="btn float-lg-right btn-info btn-block btn-lg" type="submit" value="{% translate 'Сохранить' %}">
                     </div>
                     <div class="col-lg-3" style="margin-top: 33px;">
                         <input type="button" class="btn float-lg-right btn-danger btn-block btn-lg"
                                onclick="window.location.href = '{% url 'admins:admins_product' %}';"
-                               value="Отмена"/>
+                               value="{% translate 'Отмена' %}"/>
                     </div>
                 </div>
             </form>

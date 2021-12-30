@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load i18n %}
 {% block css %}
     <link href="{% static  'css/products.css' %}" rel="stylesheet">
 {% endblock %}
@@ -47,11 +48,11 @@
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                        <span class="sr-only">{% translate 'Предыдущая' %}</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">{% translate 'Следующая' %}</span>
                     </a>
                 </div>
                 {% include 'mainapp/includes/card.html' %}
@@ -60,7 +61,7 @@
                         <li class="page-item {% if not products.has_previous %} disabled{% endif %}">
                             <a class="page-link"
                                href="{% if products.has_previous %} {% url 'mainapp:page' products.previous_page_number %} {% endif %}"
-                               tabindex="-1" aria-disabled="true">Previous</a>
+                               tabindex="-1" aria-disabled="true">{% translate 'Предыдущая' %}</a>
                         </li>
                         {% for page in products.paginator.page_range %}
                             <li class="page-item">
@@ -70,7 +71,7 @@
                         <li class="page-item {% if not products.has_next %} disabled {% endif %}">
                             <a class="page-link"
                                href="{% if products.has_next %} {% url 'mainapp:page' products.next_page_number %} {% endif %}"
-                               tabindex="-1" aria-disabled="true">Next</a>
+                               tabindex="-1" aria-disabled="true">{% translate 'Следующая' %}</a>
                         </li>
                     </ul>
                 </nav>

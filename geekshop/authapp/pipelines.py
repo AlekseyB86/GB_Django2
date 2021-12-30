@@ -3,8 +3,6 @@ from datetime import datetime
 from urllib.parse import urlencode, urlunparse
 
 import requests
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.utils import timezone
 from social_core.exceptions import AuthForbidden, AuthException
 

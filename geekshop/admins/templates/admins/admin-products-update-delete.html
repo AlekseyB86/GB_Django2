@@ -66,10 +66,10 @@
                     <div class="form-row">
                         <div class="col-lg-6" style="padding-top: 25px">
                             <input class="btn float-lg-right btn-info btn-block btn-lg" type="submit"
-                                   value="Сохранить">
+                                   value="{% translate 'Сохранить' %}">
                             <input type="button" class="btn float-lg-right btn-danger btn-block btn-lg"
                                    onclick="window.location.href = '{% url 'admins:admins_product' %}';"
-                                   value="Отмена"/>
+                                   value="{% translate 'Отмена' %}"/>
                         </div>
                     </div>
                 </form>
