@@ -1,0 +1,71 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+    <div class="text-center">
+        <div class="h2 text-center head">
+            {% translate 'Ваши заказы' %},
+            {% if user.first_name %}
+                {{ user.first_name|title }}
+            {% else %}
+                {% translate 'Пользователь' %}
+            {% endif %}
+        </div>
+        <table class="table orders_list">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>{% translate 'Создан' %}</th>
+                <th>{% translate 'Обновлен' %}</th>
+                <th>{% translate 'Статус' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in object_list %}
+                {% if item.is_active %}
+                    <tr>
+                        <td class="td1 orders_list">{{ item.pk }}</td>
+                        <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'orders:read' item.pk %}">
+                                {% translate 'посмотреть' %}
+                            </a>
+                        </td>
+                        <td>
+                            {% if item.status == 'FM' %}
+                                <a href="{% url 'orders:update' item.pk %}">
+                                    {% translate 'редактировать' %}
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if item.status == 'FM' %}
+                                <a href="{% url 'orders:delete' item.pk %}">
+                                    {% translate 'удалить' %}
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <button class="btn btn-light btn-round">
+            <a href="{% url 'index' %}">
+                {% translate 'на главную' %}
+            </a>
+        </button>
+        <button class="btn btn-warning btn-round">
+            <a href="{% url 'orders:create' %}">
+                {% translate 'новый' %}
+            </a>
+        </button>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

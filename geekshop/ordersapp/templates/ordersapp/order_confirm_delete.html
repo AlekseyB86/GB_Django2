@@ -1,0 +1,19 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="text-center">
+   <div class="category_delete">
+       <div class="h1">{% translate 'Уверены, что хотите удалить' %}?</div>
+       {% include 'ordersapp/includes/inc_order_summary.html' %}
+       <form action="{% url 'orders:delete' object.pk %}" method="post">
+           {% csrf_token %}
+           <input class="btn btn-danger" type="submit" value="{% translate 'удалить' %}">
+       </form>
+       <button class="btn btn-success mt-4">
+           <a href="{% url 'orders:list' %}">{% translate 'отмена' %}</a>
+       </button>
+   </div>
+</div>
+{% endblock %}
