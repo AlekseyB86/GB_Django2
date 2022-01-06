@@ -49,6 +49,14 @@
                                 </a>
                             {% endif %}
                         </td>
+{#                    смена статуса заказа по кнопке#}
+{#                        <td>#}
+{#                            {% if item.status != 'CNC' %}#}
+{#                                <a href="{% url 'orders:change_status' item.pk %}">#}
+{#                                    {% translate 'Сменить статус' %}#}
+{#                                </a>#}
+{#                            {% endif %}#}
+{#                        </td>#}
                     </tr>
                 {% endif %}
             {% endfor %}

@@ -120,3 +120,11 @@ def order_forming_complete(request, pk):
     order.status = Order.SEND_TO_PROCEED
     order.save()
     return HttpResponseRedirect(reverse('orders:list'))
+
+
+# def order_change_status(request, pk):
+#     """Смена статуса заказа по кнопке (пока не работает)"""
+#     order = get_object_or_404(Order, pk=pk)
+#     order.status = Order.ORDER_STATUS_CHOICES[2][0]
+#     order.save()
+#     return HttpResponseRedirect(reverse('orders:list'))
