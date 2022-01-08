@@ -38,9 +38,9 @@
                                             {% csrf_token %}
                                             <input type="submit"
                                                     {% if user.is_active %}
-                                                   class="btn btn-block btn-danger" value="Удалить"
+                                                   class="btn btn-block btn-danger" value="{% translate 'Удалить' %}"
                                                     {% else %}
-                                                   class="btn btn-block btn-success" value="Восстановить"
+                                                   class="btn btn-block btn-success" value="{% translate 'Восстановить' %}"
                                                     {% endif %}>
                                         </form>
                                     </td>

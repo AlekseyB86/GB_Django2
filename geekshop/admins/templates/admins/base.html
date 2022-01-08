@@ -24,7 +24,6 @@
     </button>
     <form action="{% url 'set_language' %}" method="post">
         {% csrf_token %}
-
         <input name="next" type="hidden" value="{{ redirect_to }}">
         <div class="form-group row ajax_change" style="margin-top: 10px">
             <div class="col-md-10">
@@ -48,7 +47,7 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Поиск..." aria-label="Search"
+            <input class="form-control" type="text" placeholder="{% translate 'Поиск' %}..." aria-label="Search"
                    aria-describedby="basic-addon2"/>
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>

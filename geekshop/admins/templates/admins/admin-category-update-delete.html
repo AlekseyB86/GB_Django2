@@ -8,7 +8,6 @@
             <h1 class="mt-4">{% translate 'Редактирование категории' %} | {{ productcategory.name }}  </h1>
             <div class="card-body">
                 <form action="{% url 'admins:admin_category_update' productcategory.id %}" method="post">
-
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-lg-6">
@@ -28,13 +27,12 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="form-row">
                         <div class="col-lg-6" style="margin-top: 33px;">
-                            <input class="btn btn-info btn-block" type="submit" value="Сохранить">
+                            <input class="btn btn-info btn-block" type="submit" value="{% translate 'Сохранить' %}">
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </main>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-23 16:19+0300\n"
+"POT-Creation-Date: 2021-12-30 16:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,14 +23,14 @@ msgid "Создание категории"
 msgstr "Create a category"
 
 #: .\admins\templates\admins\admin-category-create.html:15
-#: .\admins\templates\admins\admin-category-update-delete.html:17
+#: .\admins\templates\admins\admin-category-update-delete.html:16
 #: .\admins\templates\admins\includes\inc_thead_tfoot_category.html:3
 #: .\admins\templates\admins\includes\inc_thead_tfoot_product.html:3
 msgid "Наименование"
 msgstr "Name"
 
 #: .\admins\templates\admins\admin-category-create.html:24
-#: .\admins\templates\admins\admin-category-update-delete.html:26
+#: .\admins\templates\admins\admin-category-update-delete.html:25
 #: .\admins\templates\admins\admin-products-create.html:50
 #: .\admins\templates\admins\admin-products-update-delete.html:57
 #: .\admins\templates\admins\includes\inc_thead_tfoot_category.html:4
@@ -38,11 +38,34 @@ msgstr "Name"
 msgid "Описание"
 msgstr "Description"
 
+#: .\admins\templates\admins\admin-category-create.html:31
+#: .\admins\templates\admins\admin-category-update-delete.html:32
+#: .\admins\templates\admins\admin-products-create.html:60
+#: .\admins\templates\admins\admin-products-update-delete.html:69
+#: .\admins\templates\admins\admin-users-create.html:66
+#: .\admins\templates\admins\admin-users-update-delete.html:57
+#: .\authapp\templates\authapp\profile.html:97
+msgid "Сохранить"
+msgstr "Save"
+
 #: .\admins\templates\admins\admin-category-read.html:8
 #: .\admins\templates\admins\admin-category-read.html:12
 #: .\admins\templates\admins\includes\siberia_bar.html:19
 msgid "Категории"
 msgstr "Categories"
+
+#: .\admins\templates\admins\admin-category-read.html:35
+#: .\admins\templates\admins\admin-product-read.html:38
+#: .\admins\templates\admins\admin-users-read.html:41
+#: .\admins\templates\admins\admin-users-update-delete.html:65
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\admins\templates\admins\admin-category-read.html:37
+#: .\admins\templates\admins\admin-product-read.html:40
+#: .\admins\templates\admins\admin-users-read.html:43
+msgid "Восстановить"
+msgstr "Restore"
 
 #: .\admins\templates\admins\admin-category-read.html:49
 msgid "Создать категорию"
@@ -50,7 +73,7 @@ msgstr "Create a category"
 
 #: .\admins\templates\admins\admin-category-update-delete.html:8
 msgid "Редактирование категории"
-msgstr "Editing a category"
+msgstr "Editing a Category"
 
 #: .\admins\templates\admins\admin-product-read.html:8
 #: .\admins\templates\admins\admin-product-read.html:12
@@ -64,7 +87,7 @@ msgstr "Create a product"
 
 #: .\admins\templates\admins\admin-products-create.html:8
 msgid "Создание продукта"
-msgstr "Create a product"
+msgstr "Product creation"
 
 #: .\admins\templates\admins\admin-products-create.html:15
 #: .\admins\templates\admins\admin-products-update-delete.html:17
@@ -81,6 +104,7 @@ msgstr "Category"
 #: .\admins\templates\admins\admin-products-update-delete.html:34
 #: .\admins\templates\admins\admin-users-create.html:32
 #: .\admins\templates\admins\admin-users-update-delete.html:34
+#: .\authapp\templates\authapp\profile.html:58
 msgid "Выберите изображение"
 msgstr "Select an image"
 
@@ -96,6 +120,11 @@ msgstr "Price"
 msgid "Количество"
 msgstr "Quantity"
 
+#: .\admins\templates\admins\admin-products-create.html:65
+#: .\admins\templates\admins\admin-products-update-delete.html:72
+msgid "Отмена"
+msgstr "Cancel"
+
 #: .\admins\templates\admins\admin-products-update-delete.html:8
 msgid "Редактирование продукта"
 msgstr "Editing a product"
@@ -107,32 +136,44 @@ msgstr "User creation"
 #: .\admins\templates\admins\admin-users-create.html:15
 #: .\admins\templates\admins\admin-users-update-delete.html:17
 #: .\admins\templates\admins\includes\inc_thead_user.html:4
+#: .\authapp\templates\authapp\profile.html:41
+#: .\authapp\templates\authapp\register.html:31
 msgid "Имя"
 msgstr "First name"
 
 #: .\admins\templates\admins\admin-users-create.html:22
 #: .\admins\templates\admins\admin-users-update-delete.html:24
 #: .\admins\templates\admins\includes\inc_thead_user.html:5
+#: .\authapp\templates\authapp\profile.html:48
+#: .\authapp\templates\authapp\register.html:38
 msgid "Фамилия"
 msgstr "Second name"
 
 #: .\admins\templates\admins\admin-users-create.html:39
 #: .\admins\templates\admins\admin-users-update-delete.html:41
 #: .\admins\templates\admins\includes\inc_thead_user.html:3
+#: .\authapp\templates\authapp\login.html:37
+#: .\authapp\templates\authapp\profile.html:66
+#: .\authapp\templates\authapp\register.html:46
 msgid "Имя пользователя"
 msgstr "Username"
 
 #: .\admins\templates\admins\admin-users-create.html:44
 #: .\admins\templates\admins\admin-users-update-delete.html:46
+#: .\authapp\templates\authapp\profile.html:71
+#: .\authapp\templates\authapp\register.html:51
 msgid "Адрес электронной почты"
 msgstr "Email"
 
 #: .\admins\templates\admins\admin-users-create.html:48
 #: .\admins\templates\admins\admin-users-update-delete.html:51
+#: .\authapp\templates\authapp\profile.html:79
 msgid "Возраст"
 msgstr "Age"
 
 #: .\admins\templates\admins\admin-users-create.html:55
+#: .\authapp\templates\authapp\login.html:42
+#: .\authapp\templates\authapp\register.html:59
 msgid "Пароль"
 msgstr "Password"
 
@@ -148,7 +189,7 @@ msgstr "Users"
 
 #: .\admins\templates\admins\admin-users-read.html:55
 msgid "Создать пользователя"
-msgstr "User creation"
+msgstr "Create user"
 
 #: .\admins\templates\admins\admin-users-update-delete.html:8
 msgid "Редактирование пользователя"
@@ -161,6 +202,10 @@ msgstr "Admin panel"
 #: .\admins\templates\admins\base.html:22
 msgid "Админка"
 msgstr "Admin"
+
+#: .\admins\templates\admins\base.html:51
+msgid "Поиск"
+msgstr "Search"
 
 #: .\admins\templates\admins\base.html:64
 msgid "На сайт"
@@ -182,51 +227,179 @@ msgstr "Email"
 
 #: .\admins\templates\admins\includes\inc_thead_user.html:7
 msgid "Персонал сайта"
-msgstr "Site staff"
+msgstr "Staff"
 
 #: .\admins\templates\admins\includes\siberia_bar.html:8
 msgid "Приложения"
 msgstr "Applications"
 
-#: .\authapp\forms.py:15 .\authapp\forms.py:29
-#, fuzzy
-#| msgid "Создание пользователя"
+#: .\authapp\forms.py:16 .\authapp\forms.py:29
 msgid "Введите имя пользователя"
-msgstr "Username"
+msgstr "Enter your username"
 
-#: .\authapp\forms.py:16 .\authapp\forms.py:33
-#, fuzzy
-#| msgid "Повторите пароль"
+#: .\authapp\forms.py:17 .\authapp\forms.py:33
 msgid "Введите пароль"
-msgstr "Repeat password"
+msgstr "enter password"
 
 #: .\authapp\forms.py:30
-#, fuzzy
-#| msgid "Адрес эл. почты"
 msgid "Введите адрес эл.почты"
-msgstr "Email"
+msgstr "Enter your email"
 
 #: .\authapp\forms.py:31
 msgid "Введите  имя"
-msgstr "Fist name"
+msgstr "Enter first name"
 
 #: .\authapp\forms.py:32
 msgid "Введите  фамилию"
-msgstr "Second name"
+msgstr "Enter second name"
 
-#: .\geekshop\settings.py:116
+#: .\authapp\templates\authapp\login.html:29
+msgid "Авторизация"
+msgstr "Authorization"
+
+#: .\authapp\templates\authapp\login.html:47
+msgid "Забыли пароль"
+msgstr "Repeat password"
+
+#: .\authapp\templates\authapp\login.html:48
+#: .\authapp\templates\authapp\register.html:79
+msgid "Авторизоваться"
+msgstr "Login"
+
+#: .\authapp\templates\authapp\login.html:60
+msgid "Нужен аккаунт"
+msgstr "Account"
+
+#: .\authapp\templates\authapp\login.html:60
+msgid "Зарегистрируйся"
+msgstr "SignUp"
+
+#: .\authapp\templates\authapp\profile.html:29
+msgid "Профиль"
+msgstr "Profile"
+
+#: .\authapp\templates\authapp\profile.html:84
+msgid "Пол"
+msgstr "Sex"
+
+#: .\authapp\templates\authapp\profile.html:91
+msgid "о себе"
+msgstr "about"
+
+#: .\authapp\templates\authapp\register.html:22
+#: .\authapp\templates\authapp\register.html:73
+msgid "Создать аккаунт"
+msgstr "Create an account"
+
+#: .\authapp\templates\authapp\register.html:66
+msgid "Подтверждение пароля"
+msgstr "Password confirmation"
+
+#: .\authapp\templates\authapp\register.html:79
+msgid "Уже есть аккаунт"
+msgstr "Already have an account"
+
+#: .\authapp\templates\authapp\verification.html:20
+msgid "Активация профиля"
+msgstr "Profile activation"
+
+#: .\authapp\templates\authapp\verification.html:24
+msgid "Поздравляем"
+msgstr "Congratulations"
+
+#: .\authapp\templates\authapp\verification.html:26
+msgid "Пользователь"
+msgstr "User"
+
+#: .\authapp\templates\authapp\verification.html:26
+msgid "подтвержден"
+msgstr "confirmed"
+
+#: .\authapp\templates\authapp\verification.html:28
+msgid "Верификация не пройдена"
+msgstr "Verification failed"
+
+#: .\authapp\templates\authapp\verification.html:32
+msgid "на главную"
+msgstr "main"
+
+#: .\baskets\templates\baskets\basket.html:7
+msgid "Корзина"
+msgstr "Basket"
+
+#: .\baskets\templates\baskets\basket.html:36
+msgid "Итого"
+msgstr "Total"
+
+#: .\baskets\templates\baskets\basket.html:37
+#: .\mainapp\templates\mainapp\detail.html:28
+#: .\mainapp\templates\mainapp\includes\card.html:17
+msgid "руб"
+msgstr "rub"
+
+#: .\baskets\templates\baskets\basket.html:40
+msgid "Оформить"
+msgstr "Checkout"
+
+#: .\baskets\templates\baskets\basket.html:42
+msgid "Корзина пуста"
+msgstr "Basket is empty"
+
+#: .\geekshop\settings.py:126
 msgid "Russia"
 msgstr ""
 
-#: .\geekshop\settings.py:117
+#: .\geekshop\settings.py:127
 msgid "English"
 msgstr ""
 
-#~ msgid "Изменить"
-#~ msgstr "Change"
+#: .\mainapp\templates\mainapp\base.html:38
+msgid "Каталог"
+msgstr "Catalog"
 
-#~ msgid "Имя не может быть только цифрами"
-#~ msgstr "The name cannot be only numbers"
+#: .\mainapp\templates\mainapp\base.html:44
+msgid "Войти"
+msgstr "Login"
 
-#~ msgid "Имя не может содержать цифры"
-#~ msgstr "Name cannot contain numbers"
+#: .\mainapp\templates\mainapp\base.html:61
+msgid "Выйти"
+msgstr "Logout"
+
+#: .\mainapp\templates\mainapp\detail.html:15
+msgid "Все"
+msgstr "All"
+
+#: .\mainapp\templates\mainapp\detail.html:29
+msgid "В наличии"
+msgstr "In stock"
+
+#: .\mainapp\templates\mainapp\includes\card.html:22
+msgid "Отправить в корзину"
+msgstr "Send to basket"
+
+#: .\mainapp\templates\mainapp\index.html:16
+msgid "Новые образы и лучшие бренды на GeekShop Store"
+msgstr "New Looks and Top Brands on the GeekShop Store"
+
+#: .\mainapp\templates\mainapp\index.html:17
+#, python-format
+msgid ""
+"Бесплатная доставка по всему миру! Аутлет: до -70%% Собственный бренд. -20%% "
+"новым покупателям"
+msgstr ""
+"Free worldwide shipping! Outlet: up to -70 %% Own brand. -20 %% to new "
+"customers"
+
+#: .\mainapp\templates\mainapp\index.html:21
+msgid "Начать покупки"
+msgstr "Start shopping"
+
+#: .\mainapp\templates\mainapp\products.html:51
+#: .\mainapp\templates\mainapp\products.html:64
+msgid "Предыдущая"
+msgstr "Previous"
+
+#: .\mainapp\templates\mainapp\products.html:55
+#: .\mainapp\templates\mainapp\products.html:74
+msgid "Следующая"
+msgstr "Next"
