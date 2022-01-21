@@ -49,10 +49,14 @@
                     </div>
                 </form>
                 <div class="list-group-horizontal card-footer text-center small">
-                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next='/'">
-                        <i class="fab fa-vk"></i>
-                    </a>
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/"><i class="fab fa-vk"></i></a>
+                    <a href="{% url 'social:begin' 'github' %}?next=/"><i class="fab fa-github"></i></a>
                 </div>
+{#                <div class="list-group-horizontal card-footer text-center small">#}
+{#                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next='/'">#}
+{#                        <i class="fab fa-vk"></i>#}
+{#                    </a>#}
+{#                </div>#}
             </div>
             <div class="card-footer text-center">
                 <div class="small">
