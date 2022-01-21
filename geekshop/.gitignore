@@ -1,6 +1,7 @@
-/.idea
+/.idea/
 db.sqlite3_old
 __pycache__/
 .env
 /media/
 tmp/
+/venv/

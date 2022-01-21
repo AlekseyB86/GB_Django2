@@ -2,8 +2,8 @@ from django.db import transaction
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-
-# Create your views here.
+from django.dispatch import receiver
+from django.db.models.signals import pre_delete, pre_save
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
@@ -42,7 +42,7 @@ class OrderCreateView(CreateView, BaseClassContextMixin):
                     form.initial['product'] = basket_item[num].product
                     form.initial['quantity'] = basket_item[num].quantity
                     form.initial['price'] = basket_item[num].product.price
-                    # basket_item.delete()
+                basket_item.delete()
             else:
                 formset = OrderFormSet()
         context['orderitems'] = formset
@@ -122,9 +122,19 @@ def order_forming_complete(request, pk):
     return HttpResponseRedirect(reverse('orders:list'))
 
 
-def order_change_status(request, pk):
-    """Смена статуса заказа по кнопке (пока не работает)"""
-    order = get_object_or_404(Order, pk=pk)
-    order.status = Order.ORDER_STATUS_CHOICES[5][0]
-    order.save()
-    return HttpResponseRedirect(reverse('orders:list'))
+@receiver(pre_delete, sender=OrderItem)
+@receiver(pre_delete, sender=Basket)
+def product_quantity_update_delete(sender, instance, **kwargs):
+    instance.product.quantity += instance.quantity
+    instance.product.save()
+
+
+@receiver(pre_save, sender=OrderItem)
+@receiver(pre_save, sender=Basket)
+def product_quantity_update_save(sender, instance, **kwargs):
+    if instance.pk:
+        get_item = instance.get_item(int(instance.pk))
+        instance.product.quantity -= instance.quantity - get_item
+    else:
+        instance.product.quantity -= instance.quantity
+    instance.product.save()

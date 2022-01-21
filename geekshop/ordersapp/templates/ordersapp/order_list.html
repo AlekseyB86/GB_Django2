@@ -27,8 +27,8 @@
                 {% if item.is_active %}
                     <tr>
                         <td class="td1 orders_list">{{ item.pk }}</td>
-                        <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
-                        <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.create_at|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.update_at|date:"Y-m-d H:i:s" }}</td>
                         <td>{{ item.get_status_display }}</td>
                         <td>
                             <a href="{% url 'orders:read' item.pk %}">
@@ -46,14 +46,6 @@
                             {% if item.status == 'FM' %}
                                 <a href="{% url 'orders:delete' item.pk %}">
                                     {% translate 'удалить' %}
-                                </a>
-                            {% endif %}
-                        </td>
-{#                    смена статуса заказа по кнопке#}
-                        <td>
-                            {% if item.status != 'CNC' %}
-                                <a href="{% url 'orders:change_status' item.pk %}">
-                                    {% translate 'Сменить статус' %}
                                 </a>
                             {% endif %}
                         </td>
