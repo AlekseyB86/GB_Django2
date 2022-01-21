@@ -19,9 +19,6 @@
     <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     {% block css %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
-            crossorigin="anonymous"></script>
-
     {% endblock %}
 </head>
 
@@ -31,28 +28,29 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{% url 'index' %}">GeekShop {% now "D d M Y" %} </a>
-        <form action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}">
-            <div class="form-group row ajax_change" style="margin-top: 10px">
-                <div class="col-md-10">
-                    <select class="form-control" name="language">
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                                    selected{% endif %}>
-                                {{ language.name_local }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <input id='language_site' type="hidden">
-                </div>
-            </div>
-        </form>
+
+{#        <form action="{% url 'set_language' %}" method="post">#}
+{#            {% csrf_token %}#}
+{#            <input name="next" type="hidden" value="{{ redirect_to }}">#}
+{#            <div class="form-group row ajax_change" style="margin-top: 10px">#}
+{#                <div class="col-md-10">#}
+{#                    <select class="form-control" name="language">#}
+{#                        {% get_current_language as LANGUAGE_CODE %}#}
+{#                        {% get_available_languages as LANGUAGES %}#}
+{#                        {% get_language_info_list for LANGUAGES as languages %}#}
+{#                        {% for language in languages %}#}
+{#                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}#}
+{#                                    selected{% endif %}>#}
+{#                                {{ language.name_local }}#}
+{#                            </option>#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+{#                </div>#}
+{#                <div class="col-md-2">#}
+{#                    <input id='language_site' type="hidden">#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,9 +70,29 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'authapp:profile' %}">{{ user.username }}
-                            <i class="fas fa-user-circle"></i>
-                        </a>
+                        {#                        <a class="nav-link" href="{% url 'authapp:profile' %}">{{ user.username }}#}
+                        {#                            <i class="fas fa-user-circle"></i>#}
+                        {#                        </a>#}
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+                                {% if user.username %}{{ user.username }}
+                                    {% else %}{% translate 'Пользователь' %}
+                                {% endif %}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="nav-link text-dark" href="{% url 'authapp:profile' %}">
+                                        {% translate 'Профиль' %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark" href="{% url 'orders:list' %}">
+                                        {% translate 'Заказы' %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     {% if user.is_superuser %}
                         <li class="nav-item">
@@ -111,11 +129,9 @@
 
 <script src="{% static  'js/basket.js' %}"></script>
 
-
 <!-- FontAwesome script -->
 <script src="{% static  'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="{% static  'js/admins.js' %}"></script>
+{#<script src="{% static  'js/admins.js' %}"></script>#}
 </body>
 
 </html>

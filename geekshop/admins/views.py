@@ -15,12 +15,12 @@ from mainapp.models import Product, ProductCategory
 from django.utils.translation import gettext_lazy as _
 
 
-class IndexTemplateView(TemplateView):
+class IndexTemplateView(TemplateView, CustomDispatchMixin):
     template_name = 'admins/admin.html'
 
 
 # Users
-class UserListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
+class UserListView(ListView, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-read.html'
 
@@ -32,14 +32,14 @@ class UserCreateView(CreateView, CustomDispatchMixin):
     success_url = reverse_lazy('admins:admin_users')
 
 
-class UserUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
+class UserUpdateView(UpdateView, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
     success_url = reverse_lazy('admins:admin_users')
 
 
-class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
+class UserDeleteView(DeleteView, CustomDispatchMixin):
     model = User
     template_name = 'admins/admin-users-update-delete.html'
     form_class = UserAdminProfileForm
@@ -53,7 +53,7 @@ class UserDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
 
 
 # Category
-class CategoryListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
+class CategoryListView(ListView, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-read.html'
 
@@ -64,7 +64,7 @@ class CategoryListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
             return ProductCategory.objects.all()
 
 
-class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin):
+class CategoryDeleteView(DeleteView, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     success_url = reverse_lazy('admins:admin_category')
@@ -81,14 +81,14 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
         return HttpResponseRedirect(self.get_success_url())
 
 
-class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
+class CategoryUpdateView(UpdateView, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     form_class = CategoryUpdateFormAdmin
     success_url = reverse_lazy('admins:admin_category')
 
 
-class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
+class CategoryCreateView(CreateView, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-create.html'
     success_url = reverse_lazy('admins:admin_category')
@@ -96,7 +96,7 @@ class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin)
 
 
 # Product
-class ProductListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
+class ProductListView(ListView, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-product-read.html'
 
@@ -109,7 +109,7 @@ class ProductsUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin)
     success_url = reverse_lazy('admins:admins_product')
 
 
-class ProductsCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
+class ProductsCreateView(CreateView, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-products-create.html'
     form_class = ProductsForm
