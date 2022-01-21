@@ -1,3 +1,4 @@
+import requests as requests
 from django.db import transaction
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
@@ -6,7 +7,7 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_delete, pre_save
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-
+from django.http import JsonResponse
 from baskets.models import Basket
 from mainapp.mixin import BaseClassContextMixin
 from ordersapp.forms import OrderItemsForm
@@ -18,7 +19,7 @@ class OrderListView(ListView, BaseClassContextMixin):
     title = 'Geekshop | Список заказов'
 
     def get_queryset(self):
-        return Order.objects.filter(is_active=True, user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-is_active')
 
 
 class OrderCreateView(CreateView, BaseClassContextMixin):
@@ -138,3 +139,11 @@ def product_quantity_update_save(sender, instance, **kwargs):
     else:
         instance.product.quantity -= instance.quantity
     instance.product.save()
+
+
+def product_price(request, pk):
+    if request.is_ajax():
+        product_item = Product.objects.filter(pk=pk).first()
+        if product_item:
+            return JsonResponse({'price': product_item.price})
+        return JsonResponse({'price': 0})
