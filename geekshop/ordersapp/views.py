@@ -10,6 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from django.http import JsonResponse
 from baskets.models import Basket
 from mainapp.mixin import BaseClassContextMixin
+from mainapp.models import Product
 from ordersapp.forms import OrderItemsForm
 from ordersapp.models import Order, OrderItem
 
@@ -43,7 +44,7 @@ class OrderCreateView(CreateView, BaseClassContextMixin):
                     form.initial['product'] = basket_item[num].product
                     form.initial['quantity'] = basket_item[num].quantity
                     form.initial['price'] = basket_item[num].product.price
-                basket_item.delete()
+                # basket_item.delete()
             else:
                 formset = OrderFormSet()
         context['orderitems'] = formset
@@ -55,6 +56,7 @@ class OrderCreateView(CreateView, BaseClassContextMixin):
         orderitems = context['orderitems']
 
         with transaction.atomic():
+            Basket.objects.filter(user=self.request.user).delete()
             form.instance.user = self.request.user
             self.object = form.save()
             if orderitems.is_valid():
@@ -93,7 +95,6 @@ class OrderUpdateView(UpdateView, BaseClassContextMixin):
         orderitems = context['orderitems']
 
         with transaction.atomic():
-            form.instance.user = self.request.user
             self.object = form.save()
             if orderitems.is_valid():
                 orderitems.instance = self.object
