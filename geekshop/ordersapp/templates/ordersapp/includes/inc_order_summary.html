@@ -3,8 +3,8 @@
 {% if object %}
    <div class="h2">{% translate 'Заказ' %} №{{ object.pk }} от {{ object.created|date:"Y-m-d H:i:s" }}</div>
    <hr>
-   <div class="h4">{% translate 'заказчик' %}: {{ user.last_name }} {{ user.first_name }} </div>
-   <div class="h4">{% translate 'обновлен' %}: {{ object.updated|date:"Y-m-d H:i:s" }}</div>
+   <div class="h4">{% translate 'заказчик' %}: {{ user.username }} ({{ user.last_name }} {{ user.first_name }}) </div>
+   <div class="h4">{% translate 'обновлен' %}: {{ object.update_at|date:"Y-m-d H:i:s" }}</div>
    <div class="h4">{% translate 'cтатус' %}: {{ object.get_status_display }}</div>
    <hr>
    <div class="h4">
