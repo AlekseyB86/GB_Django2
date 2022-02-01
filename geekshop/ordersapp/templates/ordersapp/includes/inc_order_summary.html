@@ -16,7 +16,7 @@
 {% else %}
    <div class="h2">{% translate 'Новый заказ' %}</div>
    <hr>
-   <div class="h4">{% translate 'заказчик' %}: {{ user.last_name }} {{ user.first_name }} </div>
+   <div class="h4">{% translate 'заказчик' %}: {{ user.username }} ({{ user.last_name }} {{ user.first_name }}) </div>
    {% if basket.0 %}
        <div class="h4">
            {% translate 'общее количество товаров' %}: <span class="order_total_quantity">{{ basket.0.get_total_quantity }}</span>
