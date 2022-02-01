@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv(BASE_DIR / '.env')
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-3!qm%#5%$5g0-(%vu4%j@^x9(nvvh5h*wm^kngwb7dyq&qx4*c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -164,10 +164,15 @@ LOGIN_ERROR_URL = '/'
 
 DOMAIN_NAME = 'http://46.183.163.200'
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'geekshop777@mail.ru'
+EMAIL_HOST_PASSWORD = '1w2qs3r4eF'
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/emails/'

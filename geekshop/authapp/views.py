@@ -10,7 +10,6 @@ from django.views.generic import FormView, UpdateView
 
 from authapp.forms import UserLoginForm, UserRegisterForm, UserProfilerForm, UserProfileEditForm
 from authapp.models import User
-from baskets.models import Basket
 from django.conf import settings
 from mainapp.mixin import BaseClassContextMixin, UserDispatchMixin
 
