@@ -163,15 +163,25 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/'
 
 DOMAIN_NAME = 'http://46.183.163.200'
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'geekshop777@yandex.ru'
-EMAIL_HOST_PASSWORD = 'npucbdqvgyflsqwe'
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
+# EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'geekshop777@yandex.ru'
+# EMAIL_HOST_PASSWORD = 'здесь пароль'
+# EMAIL_USE_SSL = True
+# EMAIL_USE_TLS = False
+#
+# SERVER_EMAIL = EMAIL_HOST_USER
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+RECIPIENTS_EMAIL = ['']
+DEFAULT_FROM_EMAIL = 'geekshop777@mail.ru'
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "geekshop777@mail.ru"
+EMAIL_HOST_PASSWORD = "1w2qs3r4eF"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
