@@ -166,7 +166,7 @@ DOMAIN_NAME = 'http://46.183.163.200'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'geekshop777@yandex.ru'
-EMAIL_HOST_PASSWORD = '1w2qs3r4eF'
+EMAIL_HOST_PASSWORD = 'npucbdqvgyflsqwe'
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 
