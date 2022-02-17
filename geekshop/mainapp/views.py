@@ -31,29 +31,29 @@ def get_link_category():
     return link_category
 
 
-# def get_product():
-def get_product(id_category=None):
+def get_product():
+# def get_product(id_category=None):
     if not settings.LOW_CACHE:
         return Product.objects.all().select_related('category')
     key = 'link_product'
     link_product = cache.get(key)
     if link_product is None:
-        if id_category:
-            link_product = Product.objects.filter(category_id=id_category).select_related('category')
-        else:
-            link_product = Product.objects.all().select_related('category')
-        # link_product = Product.objects.all().select_related('category')
+        # if id_category:
+        #     link_product = Product.objects.filter(category_id=id_category).select_related('category')
+        # else:
+        #     link_product = Product.objects.all().select_related('category')
+        link_product = Product.objects.all().select_related('category')
         cache.set(key, link_product)
     return link_product
 
 
 def products(request, id_category=None, page=1):
-    # if id_category:
-    #     products = Product.objects.filter(category_id=id_category).select_related('category')
-    # else:
-    #     products = Product.objects.all().select_related()
-    # products = get_product()
-    products = get_product(id_category)
+    if id_category:
+        products = Product.objects.filter(category_id=id_category).select_related('category')
+    else:
+        products = Product.objects.all().select_related()
+    products = get_product()
+    # products = get_product(id_category)
     paginator = Paginator(products, per_page=3)
 
     try:
