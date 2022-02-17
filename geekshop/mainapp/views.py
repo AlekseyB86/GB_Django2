@@ -32,19 +32,25 @@ def get_link_category():
 
 
 def get_product():
-# def get_product(id_category=None):
     if not settings.LOW_CACHE:
         return Product.objects.all().select_related('category')
     key = 'link_product'
     link_product = cache.get(key)
     if link_product is None:
-        # if id_category:
-        #     link_product = Product.objects.filter(category_id=id_category).select_related('category')
-        # else:
-        #     link_product = Product.objects.all().select_related('category')
         link_product = Product.objects.all().select_related('category')
         cache.set(key, link_product)
     return link_product
+
+
+def get_product_one(pk):
+    if not settings.LOW_CACHE:
+        return Product.objects.get(id=pk)
+    key = f'product{pk}'
+    product = cache.get(key)
+    if product is None:
+        product = Product.objects.get(id=pk)
+        cache.set(key, product)
+    return product
 
 
 def products(request, id_category=None, page=1):
@@ -53,7 +59,6 @@ def products(request, id_category=None, page=1):
     else:
         products = Product.objects.all().select_related()
     products = get_product()
-    # products = get_product(id_category)
     paginator = Paginator(products, per_page=3)
 
     try:
@@ -79,3 +84,9 @@ class ProductDetail(DetailView):
     """
     model = Product
     template_name = 'mainapp/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetail, self).get_context_data(**kwargs)
+        # product = self.get_object()
+        context['product'] = get_product_one(self.kwargs.get('pk'))
+        return context
