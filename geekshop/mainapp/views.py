@@ -4,6 +4,8 @@ from django.shortcuts import render
 import os
 
 from django.views.generic import DetailView
+from django.conf import settings
+from django.core.cache import cache
 
 from mainapp.models import Product, ProductCategory
 
@@ -16,6 +18,17 @@ def index(request):
     context = {
         'title': 'Geekshop', }
     return render(request, 'mainapp/index.html', context)
+
+
+def get_link_category():
+    if not settings.LOW_CACHE:
+        return ProductCategory.objects.all()
+    key = 'link_category'
+    link_category = cache.get(key)
+    if link_category is None:
+        link_category = ProductCategory.objects.all()
+        cache.set(key, link_category)
+    return link_category
 
 
 def products(request, id_category=None, page=1):
@@ -36,7 +49,8 @@ def products(request, id_category=None, page=1):
     context = {
         'title': 'Geekshop | Каталог',
         'products': products_paginator,
-        'categories': ProductCategory.objects.all(),
+        # 'categories': ProductCategory.objects.all(),
+        'categories': get_link_category(),
     }
 
     return render(request, 'mainapp/products.html', context)
