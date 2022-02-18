@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 import os
 
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page, never_cache
 from django.views.generic import DetailView
 from django.conf import settings
 from django.core.cache import cache
@@ -53,7 +53,9 @@ def get_product_one(pk):
         cache.set(key, product)
     return product
 
+
 # @cache_page(3600)
+@never_cache
 def products(request, id_category=None, page=1):
     if id_category:
         products = Product.objects.filter(category_id=id_category).select_related('category')
