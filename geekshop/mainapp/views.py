@@ -53,7 +53,7 @@ def get_product_one(pk):
         cache.set(key, product)
     return product
 
-@cache_page(3600)
+# @cache_page(3600)
 def products(request, id_category=None, page=1):
     if id_category:
         products = Product.objects.filter(category_id=id_category).select_related('category')
