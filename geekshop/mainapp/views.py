@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 import os
 
+from django.views.decorators.cache import cache_page
 from django.views.generic import DetailView
 from django.conf import settings
 from django.core.cache import cache
@@ -52,13 +53,13 @@ def get_product_one(pk):
         cache.set(key, product)
     return product
 
-
+@cache_page(3600)
 def products(request, id_category=None, page=1):
     if id_category:
         products = Product.objects.filter(category_id=id_category).select_related('category')
     else:
         products = Product.objects.all().select_related()
-    products = get_product()
+    # products = get_product()
     paginator = Paginator(products, per_page=3)
 
     try:
@@ -71,8 +72,8 @@ def products(request, id_category=None, page=1):
     context = {
         'title': 'Geekshop | Каталог',
         'products': products_paginator,
-        # 'categories': ProductCategory.objects.all(),
-        'categories': get_link_category(),
+        'categories': ProductCategory.objects.all(),
+        # 'categories': get_link_category(),
     }
 
     return render(request, 'mainapp/products.html', context)
