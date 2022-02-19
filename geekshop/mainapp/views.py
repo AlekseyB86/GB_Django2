@@ -55,7 +55,7 @@ def get_product_one(pk):
 
 
 # @cache_page(3600)
-@never_cache
+# @never_cache
 def products(request, id_category=None, page=1):
     if id_category:
         products = Product.objects.filter(category_id=id_category).select_related('category')
