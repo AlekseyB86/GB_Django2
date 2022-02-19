@@ -33,7 +33,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
-        ordering = ('-create_at', )
+        ordering = ('-create_at',)
 
     def __str__(self):
         return f'Текущий заказ {self.pk}'
@@ -50,13 +50,21 @@ class Order(models.Model):
         pass
 
     def delete(self, using=None, keep_parents=False):
-        for item  in self.orderitems.select_related('product'):
+        for item in self.orderitems.select_related('product'):
             item.product.quantity += item.quantity
             item.save()
         self.is_active = False
         if not self.is_active:
             self.status = 'CNC'
         self.save()
+
+    def get_summary(self):
+        items = self.orderitems.select_related()
+        return {
+            'get_total_cost': sum(list(map(lambda x: x.get_product_cost, items))),
+            'get_total_quantity': sum(list(map(lambda x: x.quantity, items)))
+
+        }
 
 
 class OrderItem(models.Model):
