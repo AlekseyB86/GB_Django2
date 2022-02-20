@@ -1,18 +1,15 @@
-from django.contrib.auth.decorators import user_passes_test
+from django.db import connection
+from django.db.models import F
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 
 # Create your views here.
-from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, TemplateView
 
 from admins.forms import UserAdminRegisterForm, UserAdminProfileForm, CategoryUpdateFormAdmin, ProductsForm
 from authapp.models import User
 from mainapp.mixin import BaseClassContextMixin, CustomDispatchMixin
 from mainapp.models import Product, ProductCategory
-
-from django.utils.translation import gettext_lazy as _
 
 
 class IndexTemplateView(TemplateView, CustomDispatchMixin):
@@ -72,12 +69,13 @@ class CategoryDeleteView(DeleteView, CustomDispatchMixin):
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.is_active = not self.object.is_active
+        self.object.product_set.update(is_active=False)
         self.object.save()
-        product_list = Product.objects.filter(category__pk=self.kwargs.get('pk'))
-        for product in product_list:
-            if product.is_active:
-                product.is_active = not product.is_active
-                product.save()
+        # product_list = Product.objects.filter(category__pk=self.kwargs.get('pk'))
+        # for product in product_list:
+        #     if product.is_active:
+        #         product.is_active = not product.is_active
+        #         product.save()
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -87,6 +85,18 @@ class CategoryUpdateView(UpdateView, CustomDispatchMixin):
     form_class = CategoryUpdateFormAdmin
     success_url = reverse_lazy('admins:admin_category')
 
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+            if discount := form.cleaned_data['discount']:
+                print(f'применяется скидка {discount}% к товарам категории {self.object.name}')
+                self.object.product_set.update(price=F('price') * (1 - discount / 100))
+                self.db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
+        return HttpResponseRedirect(self.get_success_url())
+
+    def db_profile_by_type(self, prefix, type, queries):
+        update_queries = list(filter(lambda x: type in x['sql'], queries))
+        print(f'db_profile {type} for {prefix}:')
+        [print(query['sql']) for query in update_queries]
 
 class CategoryCreateView(CreateView, CustomDispatchMixin):
     model = ProductCategory
